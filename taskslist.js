@@ -1,7 +1,7 @@
 let tasks = [
     {
         "id":"1",
-        "isCompleted":false,
+        "isCompleted":true,
         "description":"Walk the dog",
     },
     {
@@ -11,12 +11,12 @@ let tasks = [
     },
     {
         "id":"3",
-        "isCompleted":false,
+        "isCompleted":true,
         "description":"sleep",
     },
     {
         "id":"4",
-        "isCompleted":true,
+        "isCompleted":false,
         "description":"work",
     },
     {

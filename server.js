@@ -10,6 +10,13 @@ app.use(express.json());
 app.use('/list-view',viewRouter);
 app.use('/list-edit',editRouter);
 
+app.use((req, res, next) => {
+    const metodosValidos = ['GET', 'POST', 'PUT', 'DELETE']; // Define los métodos válidos aquí
+    if (!metodosValidos.includes(req.method)) {              // Verifica si los metodos no estan incluidos
+      return res.status(403).send({ mensaje: 'Método HTTP no válido' });    //Si se cumple la condicion, responde con el error
+    }
+    next();                                                                  // De lo contrario continua con el proceso
+});
 
 app.get('/', (req, res)=> {
     res.send({tasks});
