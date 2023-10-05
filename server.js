@@ -13,12 +13,12 @@ app.use('/list-view',viewRouter);
 app.use('/list-edit',editRouter);
 dotenv.config();
 
-app.use((req, res, next) => {
-    const metodosValidos = ['GET', 'POST', 'PUT', 'DELETE']; // Define los métodos válidos aquí
-    if (!metodosValidos.includes(req.method)) {              // Verifica si los metodos no estan incluidos
-      return res.status(403).send({ mensaje: 'Método HTTP no válido' });    //Si se cumple la condicion, responde con el error
+app.use((req, res, next)=> {
+    const metodosValidos = ['GET', 'POST', 'PUT', 'DELETE']; 
+    if (!metodosValidos.includes(req.method)) {              
+      return res.status(403).send({ mensaje: 'Método HTTP no válido' });   
     }
-    next();                                                                  // De lo contrario continua con el proceso
+    next();                                                                 
 });
 
 app.get('/', (req, res)=> {
@@ -41,8 +41,7 @@ app.post('/login', (req, res)=> {
             name:user.name,
             rol: user.rol
         }
-
-    const token = jwt.sign(payload, process.env.SECRET_KEY, {     //firmo el token 
+       const token = jwt.sign(payload, process.env.SECRET_KEY, {     //firmo el token 
         expiresIn: '1d',
         algorithm: 'HS256'
     })
